@@ -51,7 +51,7 @@ module.exports = {
                 }
                 // res.json(user)
                 register(user).then((response) => {
-                    res.json(response)
+                    success(res, 'data register')
                 }).catch((error) => {
                     res.json(error)
                 })

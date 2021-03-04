@@ -10,15 +10,15 @@ const {
 
 const {getAllItemsRedis } = require ('../helpers/redis/items')
 
-const { authToken,authCashier} = require('../helpers/middleware/auth')
+const { authToken,authCashier,authAdmin} = require('../helpers/middleware/auth')
 
 const upload = require ('../helpers/middleware/multer')
 
 route
-  .get("/items",authToken, authCashier,getAllItemsRedis,getAllItems)
-  .get("/items/:id",authToken, authCashier, getDetailItems)
-  .post("/items/", authToken,authCashier,upload,inputItems)
-  .put("/items/:id", authToken, authCashier,upload, updateItems)
-  .delete("/items/:id", authToken, authCashier,deleteItems)
+  .get("/items",authToken,getAllItemsRedis,getAllItems)
+  .get("/items/:id",authToken, getDetailItems)
+  .post("/items/", authToken,upload,inputItems)
+  .put("/items/:id", authToken,upload, updateItems)
+  .delete("/items/:id", authToken,deleteItems)
 
 module.exports = route;

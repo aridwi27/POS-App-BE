@@ -29,7 +29,7 @@ const upload = (req, res ,next) => {
     const sigleUpload =dataUpload.single('image')
     sigleUpload(req,res, (err) => {
         if (err) { 
-            datainvalid(res, 'file max 1Mb', err)
+            datainvalid(res, 'file max 2Mb', err)
         }else {
             next()
         }

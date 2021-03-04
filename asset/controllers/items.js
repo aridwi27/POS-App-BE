@@ -14,7 +14,8 @@ const fs =require('fs')
 const redis = require('../config/redis');
 const { json } = require("body-parser");
 const multer = require("multer");
-const path = require('path')
+const path = require('path');
+const { result } = require("lodash");
 
 module.exports = {
   setRedisItems: () => {
@@ -30,7 +31,7 @@ module.exports = {
       const name = req.query.name ? req.query.name : '';
       const sort = req.query.sort ? req.query.sort : 'id';
       const order = req.query.order ? req.query.order : 'ASC';
-      const limit = req.query.limit ? req.query.limit : 9;
+      const limit = req.query.limit ? req.query.limit : 6;
       const page = req.query.page ? req.query.page : 1;
       const limitpage = page === 1 ? 0 : (page - 1) * limit
       const total = await modelsGetTotalItems()
@@ -61,8 +62,7 @@ module.exports = {
             module.exports.setRedisItems()
             success(res, data, result, 'get Product success')
           }
-        }
-        )
+        })
         .catch((err) => {
           fail(res, 'server cant get what you want', err)
         })
@@ -77,6 +77,7 @@ module.exports = {
         .then((response) => {
           console.log(response)
           const result = {
+            id: response[0].id,
             name: response[0].name,
             category: response[0].name_category,
             price: response[0].price,
@@ -87,7 +88,7 @@ module.exports = {
         })
         .catch((res) => {
           fail(res, 'server cant get what you want', [])
-        });
+        })
     } catch (error) {
       fail(res, 'server cant get what   you want', [])
     }
@@ -118,6 +119,23 @@ module.exports = {
     }
   },
   updateItems: (req, res) => {
+    const id = req.params.id;
+    modelsGetDetailItems(id)
+    .then((response) => {
+      console.log(response)
+      const result = {
+        image: response[0].image
+      }
+      fs.unlink('./public/image/' + result.image , (err) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+      })
+    })
+    .catch((res) => {
+      fail(res, 'server cant get what you want', [])
+    })
     try {
       const id = req.params.id
       const data = req.body
@@ -145,16 +163,23 @@ module.exports = {
 
   },
   deleteItems: (req, res) => {
-    // const pathbase =path.basename('../../public/image/1611766690294.PNG')
-    fs.unlink('../../public/image/1611766690294.PNG', (err) => {
-      if (err) {
-        console.error(err)
-        return
+    const id = req.params.id;
+    modelsGetDetailItems(id)
+    .then((response) => {
+      console.log(response)
+      const result = {
+        image: response[0].image
       }
-    
-      //file removed
+      fs.unlink('./public/image/' + result.image , (err) => {
+        if (err) {
+          console.error(err)
+          return
+        }
+      })
     })
-    
+    .catch((res) => {
+      fail(res, 'server cant get what you want', [])
+    })
     try {
       const id = req.params.id
       modelsDeleteItems(id)

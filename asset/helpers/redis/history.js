@@ -14,7 +14,7 @@ module.exports = {
                     const cashier = req.query.cashier ? req.query.cashier : '';
                       const sort = req.query.sort ? req.query.sort : 'id';
                       const order = req.query.order ? req.query.order : 'asc';
-                    const limit = req.query.limit ? req.query.limit : 3;
+                    const limit = req.query.limit ? req.query.limit : 5;
                     const page = req.query.page ? req.query.page : 1;
                     const limitpage = page === 1 ? 0 : (page - 1) * limit
                     const filterData = _.filter(chageJSON, (items) => {
