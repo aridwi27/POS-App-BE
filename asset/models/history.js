@@ -46,6 +46,7 @@ module.exports = {
         });
     },
     modelsGetDetailHistory: (invoice) => {
+        console.log(invoice)
         return new Promise((resolve, reject) => {
             connect.query(`SELECT * FROM history WHERE invoice =${invoice}`, (err, result) => {
                 if (err) {

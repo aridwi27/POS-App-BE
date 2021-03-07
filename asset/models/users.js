@@ -1,3 +1,4 @@
+const { result } = require('lodash')
 const connection = require('../config/database')
 
 module.exports ={
@@ -22,6 +23,17 @@ module.exports ={
                     reject(err)
                 }else{
                     resolve(result)
+                }
+            })
+        })
+    },
+    getUser: (id) => {
+        return new Promise((resolve,reject) => {
+            connection.query(`SELECT name FROM users WHERE id=${id}`, (err, result)=> {
+                if (err) {
+                    reject(err)
+                } else {
+                    resolve(resolve)
                 }
             })
         })

@@ -57,9 +57,9 @@ module.exports = {
   getDetailHistory: (req, res) => {
     try {
       const invoice = req.params.invoice;
+      console.log(invoice)
       modelsGetDetailHistory(invoice)
         .then((response) => {
-          console.log(response)
           const result = {
             invoice: response[0].invoice,
             cashier: response[0].cashier,
@@ -68,11 +68,10 @@ module.exports = {
             amount: response[0].amount,
             date: response[0].date
           }
-          console.log(result)
           success(res, response, {}, 'get detail success from data mysql')
         })
-        .catch((res) => {
-          fail(res, 'server cant get what you want', [])
+        .catch((err) => {
+          console.log(err)
         })
     } catch (error) {
       fail(res, 'server cant get what   you want', [])

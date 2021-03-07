@@ -75,7 +75,6 @@ module.exports = {
       const id = req.params.id;
       modelsGetDetailItems(id)
         .then((response) => {
-          console.log(response)
           const result = {
             id: response[0].id,
             name: response[0].name,
@@ -83,7 +82,6 @@ module.exports = {
             price: response[0].price,
             image: response[0].image
           }
-          // console.log(result)
           success(res, result, {}, 'get detail success')
         })
         .catch((res) => {
@@ -122,7 +120,6 @@ module.exports = {
     const id = req.params.id;
     modelsGetDetailItems(id)
     .then((response) => {
-      console.log(response)
       const result = {
         image: response[0].image
       }
@@ -139,14 +136,12 @@ module.exports = {
     try {
       const id = req.params.id
       const data = req.body
-      console.log(data)
       const dataUpdate = {
         name: data.name,
         category: data.id_category,
         price: data.price,
         image: req.file.filename
       }
-      console.log(dataUpdate)
       modelsUpdateItems(dataUpdate, id)
         .then((response) => {
           module.exports.setRedisItems()
@@ -166,7 +161,6 @@ module.exports = {
     const id = req.params.id;
     modelsGetDetailItems(id)
     .then((response) => {
-      console.log(response)
       const result = {
         image: response[0].image
       }

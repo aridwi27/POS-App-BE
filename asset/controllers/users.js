@@ -19,7 +19,8 @@ module.exports = {
                    const token = jwt.sign(user, JWT )
                    res.json({
                        msg: 'login success',
-                       token : token
+                       token : token,
+                       name: response[0].name
                    })
                 
                 //    success(res, {}, {}, 'login success')
@@ -36,7 +37,6 @@ module.exports = {
     register: async (req, res) => {
 
         const body = req.body
-        console.log(body)
         checkEmail(body.email).then(async (response) => {
             if (response.length >= 1) {
                 emailRegister(res, 'email already exist')
