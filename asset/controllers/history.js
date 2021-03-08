@@ -47,11 +47,11 @@ module.exports = {
           }
         })
         .catch((err) => {
-          fail(res, 'server cant get what do you want', err)
+          console.log(err)
         })
 
     } catch (error) {
-      fail(res, 'server cant get what do you want', [])
+      console.log(error)
     }
   },
   getDetailHistory: (req, res) => {
