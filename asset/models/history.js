@@ -48,7 +48,10 @@ module.exports = {
     modelsGetDetailHistory: (invoice) => {
         console.log(invoice)
         return new Promise((resolve, reject) => {
-            connect.query(`SELECT * FROM history WHERE invoice =${invoice}`, (err, result) => {
+            connect.query(`SELECT history.id, history.invoice,history.cashier,product.name,
+            history.quantity,history.date, history.amount 
+            FROM history LEFT JOIN product ON history.orders = product.id  
+            WHERE invoice=${invoice}`, (err, result) => {
                 if (err) {
                     reject(new Error(err))
                 } else {
