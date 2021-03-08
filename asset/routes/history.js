@@ -7,7 +7,7 @@ const { authToken,authAdmin} = require('../helpers/middleware/auth')
 
 history
 .get('/history', authToken,authAdmin,getAllHistoryRedis,getAllHistory)
-.get('/history/:invoice', authToken, getDetailHistory)
+.get('/history/:invoice', authToken,authAdmin, getDetailHistory)
 .post('/history', authToken,inputHistory)
 .delete('/history/:id', authToken,authAdmin, deleteHistory)
 

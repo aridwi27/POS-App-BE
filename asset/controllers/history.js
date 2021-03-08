@@ -57,7 +57,6 @@ module.exports = {
   getDetailHistory: (req, res) => {
     try {
       const invoice = req.params.invoice;
-      console.log(invoice)
       modelsGetDetailHistory(invoice)
         .then((response) => {
           const result = {

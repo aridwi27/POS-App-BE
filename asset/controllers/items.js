@@ -73,6 +73,7 @@ module.exports = {
   getDetailItems: (req, res) => {
     try {
       const id = req.params.id;
+      console.log(id)
       modelsGetDetailItems(id)
         .then((response) => {
           const result = {
@@ -84,8 +85,8 @@ module.exports = {
           }
           success(res, result, {}, 'get detail success')
         })
-        .catch((res) => {
-          fail(res, 'server cant get what you want', [])
+        .catch((err) => {
+          console.log(err)
         })
     } catch (error) {
       fail(res, 'server cant get what   you want', [])

@@ -48,15 +48,16 @@ module.exports = {
   },
   modelsGetDetailItems: (id) => {
     return new Promise((resolve, reject) => {
-      connect.query(`SELECT product.id, product.name,category.name_category,product.price,product.image,product.date 
-      FROM product LEFT JOIN category ON product.id_category = category.id_category WHERE id =${id}`, (err, result) => {
+      connect.query(`SELECT product.id, product.name, category.name_category, product.price, product.image, product.date 
+      FROM product LEFT JOIN category ON product.id_category = category.id_category WHERE id=${id}`,
+      (err, result) => {
         if (err) {
-          reject(new Error(err));
+          reject(new Error(err))
         } else {
-          resolve(result);
+          resolve(result)
         }
-      });
-    });
+      })
+    })
   },
   modelsInputItems: (dataInput) => {
     return new Promise((resolve, reject) => {
