@@ -5,7 +5,7 @@ const { success } = require("../sucerr")
 
 module.exports = {
     getAllHistoryRedis: (req, res, next) => {
-        client.get('m', (err, result) => {
+        client.get('history', (err, result) => {
             if (err) {
                 console.log(err)
             } else {

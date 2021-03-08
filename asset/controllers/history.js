@@ -5,7 +5,7 @@ module.exports = {
   setRedisHistory: () => {
     modelsGetAllHistoryRedis().then((response) => {
       const data = JSON.stringify(response)
-      redis.set('m', data)
+      redis.set('history', data)
     }).catch((err) => {
       console.log(err)
     })
