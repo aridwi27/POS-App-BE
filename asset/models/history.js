@@ -20,8 +20,9 @@ module.exports = {
     modelsGetAllHistory: (cashier, sort, order, limitpage, limit) => {
         return new Promise((resolve, reject) => {
             connect.query(`SELECT history.id, history.invoice,history.cashier,product.name,SUM(history.amount) AS total,
-            history.quantity,history.date 
-            FROM history LEFT JOIN product ON history.orders = product.id GROUP BY invoice`, (err, result) => {
+        history.quantity,history.date 
+        FROM history LEFT JOIN product ON history.orders = product.id  
+        WHERE cashier LIKE '%${cashier}%' GROUP BY invoice ORDER BY ${sort} ${order}  LIMIT ${limitpage},${limit}`, (err, result) => {
                 if (err) {
                     console.log(err)
                     reject(new Error(err))
