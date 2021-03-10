@@ -12,10 +12,10 @@ const { PORT } = require('./asset/helpers/env')
 pos.use(bodyParser.urlencoded({ extended: false }));
 pos.use(bodyParser.json());
 pos.use(cors());
-pos.use(items);
-pos.use(history);
-pos.use(category);
-pos.use(users)
+pos.use('/api', items)
+pos.use('/api', history);
+pos.use('/api', category);
+pos.use('/api', users)
 pos.use('/image',express.static('./public/image'))
 
 pos.use(api({
