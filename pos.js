@@ -16,7 +16,7 @@ pos.use('/api', items)
 pos.use('/api', history);
 pos.use('/api', category);
 pos.use('/api', users)
-pos.use('/image',express.static('./public/image'))
+pos.use('/api/image',express.static('./public/image'))
 
 pos.use(api({
   verbose:true
