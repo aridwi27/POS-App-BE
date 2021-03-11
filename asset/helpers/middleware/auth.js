@@ -14,7 +14,6 @@ module.exports ={
                 if(err){
                     inputfail(res,'token fail')
                 }else{
-                    console.log(decoded)
                     res.userAccess = decoded.level
                     next()
                 }

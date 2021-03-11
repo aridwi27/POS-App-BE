@@ -47,7 +47,6 @@ module.exports = {
         });
     },
     modelsGetDetailHistory: (invoice) => {
-        console.log(invoice)
         return new Promise((resolve, reject) => {
             connect.query(`SELECT history.id, history.invoice,history.cashier,product.name,
             history.quantity,history.date, history.amount 
