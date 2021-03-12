@@ -15,5 +15,26 @@ This is an application for restaurant cashiers that features add menu items, sto
 
 # How to run
 1. clone this git
-2. install dependency type npm -i
-3. run backend type npm run siap
+```
+https://github.com/aridwi27/POS-App-BE
+```
+2. include pos.sql in your database
+```
+pos.sql
+```
+3. Add .env in folder
+```
+PORT= port
+DB_USERNAME= DB username
+DB_PASSWORD= DB password
+DB_NAME= DB name
+JWT= key jwt
+```
+4. install dependency type npm -i
+```
+npm -i
+```
+5. run backend type npm run siap
+```
+npm run name pos.js / npm run siap
+```
