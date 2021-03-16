@@ -38,3 +38,9 @@ npm -i
 ```
 npm run name pos.js / npm run siap
 ```
+# Frontend
+https://github.com/aridwi27/POS-App-FE
+
+
+# Demo
+[Pos Apps Demo](https://bit.ly/restorantPOS)
